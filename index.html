@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Terminal Simulation</title>
+
+<style>
+body{
+    background:black;
+    color:#00ff00;
+    font-family:Courier New, monospace;
+    margin:0;
+    padding:10px;
+}
+
+#output{
+    white-space:pre-wrap;
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="output"></div>
+
+<script>
+
+const logs = [
+"[OK] Loading Data...",
+"[OK] Accessing Server...",
+"[OK] Processing Data...",
+"[OK] Scanning Network...",
+"[WARNING] Firewall Detected",
+"[ERROR] Connection Timeout",
+"[ERROR] Sector 404 Not Found",
+"[OK] Reading Database...",
+"[OK] Loading Sector 7...",
+"[OK] Decrypting Files...",
+"[SIMULATION] Reading Messages...",
+"[SIMULATION] Reading Contacts...",
+"[SIMULATION] Processing Files...",
+"[SIMULATION] Scanning Device...",
+"[SIMULATION] Analyzing Storage...",
+"[SIMULATION] Loading User Profile...",
+"[SIMULATION] Generating Report...",
+"[SIMULATION] Checking Connections...",
+"[SIMULATION] Updating Logs...",
+"[DONE] Simulation Complete"
+];
+
+const output = document.getElementById("output");
+
+function randomHex(length){
+    let chars = "0123456789ABCDEF";
+    let result = "";
+    for(let i=0;i<length;i++){
+        result += chars[Math.floor(Math.random()*chars.length)];
+    }
+    return result;
+}
+
+setInterval(() => {
+
+    let msg = logs[Math.floor(Math.random()*logs.length)];
+    let line = document.createElement("div");
+
+    line.textContent = msg + " " + randomHex(40);
+
+    if(msg.includes("ERROR")){
+        line.style.color = "red";
+    }
+    else if(msg.includes("WARNING")){
+        line.style.color = "yellow";
+    }
+    else{
+        line.style.color = "#00ff00";
+    }
+
+    output.appendChild(line);
+
+    window.scrollTo(0, document.body.scrollHeight);
+
+}, 300);
+
+</script>
+
+</body>
+</html>
