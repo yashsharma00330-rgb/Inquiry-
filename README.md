@@ -1,0 +1,2 @@
+# Inquiry-
+JUST ONLY FUN
